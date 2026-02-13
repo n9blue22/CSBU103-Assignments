@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery ảnh</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app">
+        <header class="header">
+            <h1>Photos Gallery</h1>
+        </header>
+
+        <!-- Gallery Grid -->
+        <div class="gallery-grid">
+            <div class="photo-card">
+                <img src="https://picsum.photos/id/1015/800/600" alt="River" loading="lazy">
+            </div>
+            <div class="photo-card">
+                <img src="https://picsum.photos/id/1016/800/600" alt="Canyon" loading="lazy">
+            </div>
+            <div class="photo-card">
+                <img src="https://picsum.photos/id/1018/800/600" alt="Nature" loading="lazy">
+            </div>
+            <div class="photo-card">
+                <img src="https://picsum.photos/id/1025/800/600" alt="Pug" loading="lazy">
+            </div>
+            <div class="photo-card">
+                <img src="https://picsum.photos/id/1035/800/600" alt="Waterfall" loading="lazy">
+            </div>
+            <div class="photo-card">
+                <img src="https://picsum.photos/id/1043/800/600" alt="Modern" loading="lazy">
+            </div>
+            <div class="photo-card">
+                <img src="https://picsum.photos/id/1044/800/600" alt="Ocean" loading="lazy">
+            </div>
+            <div class="photo-card">
+                <img src="https://picsum.photos/id/1050/800/600" alt="Urban" loading="lazy">
+            </div>
+        </div>
+    </div>
+
+    <!-- Smart Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <div class="lightbox-toolbar">
+            <span id="close-btn" class="icon-btn">&times;</span>
+        </div>
+        
+        <!-- Viewport: Khung nhìn giới hạn ảnh -->
+        <div class="lightbox-viewport">
+            <!-- Image Container: Đối tượng chịu tác động của transform -->
+            <div class="image-wrapper">
+                <img id="lightbox-img" src="" alt="View" draggable="false">
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+/* --- CSS VARIABLES & RESET --- */
+:root {
+    --bg-color: #131419; /* Màu nền tối chủ đạo */
+    --text-color: #c7c7c7;
+    --shadow-light: #1c1e2f; /* Bóng sáng (Top-Left) */
+    --shadow-dark: #0a0a0d;  /* Bóng tối (Bottom-Right) */
+    --accent-blue: #03a9f4;  /* Màu nhấn cho nút = */
+    --accent-red: #f44336;   /* Màu nhấn cho nút C, DEL */
+    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    user-select: none; /* Ngăn bôi đen text khi bấm nhanh */
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* --- MAIN CONTAINER --- */
+.calculator {
+    width: 100%;
+    max-width: 350px;
+    background-color: var(--bg-color);
+    padding: 25px;
+    border-radius: 25px;
+    /* Hiệu ứng nổi khối cho khung máy tính */
+    box-shadow: 
+        10px 10px 20px var(--shadow-dark),
+        -10px -10px 20px var(--shadow-light);
+}
+
+/* --- DISPLAY SCREEN --- */
+.display-screen {
+    width: 100%;
+    height: 80px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    /* Hiệu ứng lõm (Inset) cho màn hình */
+    box-shadow: 
+        inset 5px 5px 10px var(--shadow-dark),
+        inset -5px -5px 10px var(--shadow-light);
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 15px;
+    overflow: hidden;
+}
+
+.previous-operand {
+    font-size: 1rem;
+    opacity: 0.6;
+    min-height: 1.2rem;
+}
+
+.current-operand {
+    font-size: 2rem;
+    font-weight: 600;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+/* --- BUTTON GRID --- */
+.buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+/* --- BUTTON STYLING (NEUMORPHISM) --- */
+button {
+    border: none;
+    outline: none;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-size: 1.2rem;
+    font-weight: bold;
+    height: 60px;
+    border-radius: 50%; /* Nút tròn */
+    cursor: pointer;
+    transition: all 0.1s ease;
+    
+    /* Hiệu ứng nút nổi */
+    box-shadow: 
+        6px 6px 12px var(--shadow-dark),
+        -6px -6px 12px var(--shadow-light);
+}
+
+/* Hover state */
+button:hover {
+    color: #fff;
+}
+
+/* Active / Click State (Hiệu ứng lún xuống) */
+button:active, button.pressed {
+    box-shadow: 
+        inset 4px 4px 8px var(--shadow-dark),
+        inset -4px -4px 8px var(--shadow-light);
+    transform: scale(0.98);
+}
+
+/* --- SPECIAL BUTTONS --- */
+.span-two {
+    grid-column: span 2;
+    border-radius: 30px; /* Nút dài bo góc khác */
+}
+
+.btn-clear {
+    color: var(--accent-red);
+}
+
+.btn-delete {
+    color: var(--accent-red);
+}
+
+.btn-equal {
+    background-color: var(--accent-blue);
+    color: white;
+    /* Bóng đổ riêng cho nút màu */
+    box-shadow: 
+        6px 6px 12px rgba(0, 0, 0, 0.4),
+        -6px -6px 12px rgba(255, 255, 255, 0.05);
+}
+
+.btn-equal:active, .btn-equal.pressed {
+    box-shadow: 
+        inset 4px 4px 8px rgba(0, 0, 0, 0.4),
+        inset -4px -4px 8px rgba(255, 255, 255, 0.1);
+}
+
+.btn-operator {
+    color: var(--accent-blue);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 400px) {
+    .calculator {
+        max-width: 100%;
+        border-radius: 0;
+        height: 100vh;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+    }
+    button {
+        height: 65px; /* Tăng kích thước chạm trên mobile */
+    }
+}

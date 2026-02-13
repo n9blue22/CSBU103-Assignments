@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neumorphic Dark Calculator</title>
+    <link rel="stylesheet" href="caculator.css">
+</head>
+<body>
+
+    <div class="calculator">
+        <div class="display-screen">
+            <div class="previous-operand" id="previous-operand"></div>
+            <div class="current-operand" id="current-operand">0</div>
+        </div>
+        <div class="buttons-grid">
+            <button class="btn-clear span-two" data-action="clear">AC</button>
+            <button class="btn-delete" data-action="delete">DEL</button>
+            <button class="btn-operator" data-key="/">÷</button>
+            
+            <button data-key="7">7</button>
+            <button data-key="8">8</button>
+            <button data-key="9">9</button>
+            <button class="btn-operator" data-key="*">×</button>
+            
+            <button data-key="4">4</button>
+            <button data-key="5">5</button>
+            <button data-key="6">6</button>
+            <button class="btn-operator" data-key="-">-</button>
+            
+            <button data-key="1">1</button>
+            <button data-key="2">2</button>
+            <button data-key="3">3</button>
+            <button class="btn-operator" data-key="+">+</button>
+            
+            <button data-key="." class="btn-dot">.</button>
+            <button data-key="0">0</button>
+            <button class="btn-equal span-two" data-action="calculate">=</button>
+        </div>
+    </div>
+
+    <script src="caculator.js"></script>
+</body>
+</html>
