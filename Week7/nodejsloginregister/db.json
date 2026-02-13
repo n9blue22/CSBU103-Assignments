@@ -1,0 +1,26 @@
+[
+  {
+    "id": "b1818b2a-0196-49a8-a502-a2b3b8203080",
+    "username": "chuongdlb",
+    "password": "password123",
+    "name": "Chương Đặng",
+    "gender": "male",
+    "created": "2023-10-01T12:00:00Z"
+  },
+  {
+    "id": "a2718b2a-0196-49a8-a502-a2b3b8203081",
+    "username": "janedoe",
+    "password": "password456",
+    "name": "Jane Doe",
+    "gender": "female",
+    "created": "2023-10-02T12:00:00Z"
+  },
+  {
+    "id": "c3718b2a-0196-49a8-a502-a2b3b8203082",
+    "username": "johndoe",
+    "password": "password789",
+    "name": "John Doe",
+    "gender": "male",
+    "created": "2023-10-03T12:00:00Z"
+  }
+]

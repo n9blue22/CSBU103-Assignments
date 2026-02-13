@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Register - Lập trình ứng dụng Web</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <link href="public/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <script src="public/js/jquery.min.js"></script>
+  <script src="public/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      display: flex;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+    }
+    .left-panel {
+      flex: 1;
+      background: linear-gradient(160deg, #f59e0b 0%, #ef4444 50%, #ec4899 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .left-panel::before {
+      content: '';
+      position: absolute;
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      bottom: -80px;
+      left: -80px;
+    }
+    .left-panel::after {
+      content: '';
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      top: -60px;
+      right: -40px;
+    }
+    .left-panel h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 16px;
+      z-index: 1;
+    }
+    .left-panel p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.85);
+      max-width: 360px;
+      text-align: center;
+      line-height: 1.6;
+      z-index: 1;
+    }
+    .right-panel {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+    .register-box {
+      width: 100%;
+      max-width: 400px;
+    }
+    .register-box h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #f1f5f9;
+    }
+    .register-box .subtitle {
+      color: #94a3b8;
+      margin-bottom: 32px;
+      font-size: 0.95rem;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #94a3b8;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 12px 16px;
+      background: #1e293b;
+      border: 1.5px solid #334155;
+      border-radius: 8px;
+      color: #f1f5f9;
+      font-size: 0.95rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+    .form-group input:focus {
+      border-color: #ef4444;
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+    }
+    .form-group input::placeholder {
+      color: #475569;
+    }
+    .error-msg {
+      color: #fca5a5;
+      font-size: 0.8rem;
+      margin-top: 6px;
+      display: none;
+    }
+    .btn-submit {
+      width: 100%;
+      padding: 13px;
+      background: linear-gradient(135deg, #f59e0b, #ef4444);
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.2s;
+      margin-top: 8px;
+    }
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(239, 68, 68, 0.35);
+    }
+    .btn-submit:active {
+      transform: translateY(0);
+    }
+    .bottom-link {
+      text-align: center;
+      margin-top: 24px;
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
+    .bottom-link a {
+      color: #fb923c;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .bottom-link a:hover {
+      text-decoration: underline;
+      color: #fdba74;
+    }
+    .alert {
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+    }
+    .alert-danger {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #fca5a5;
+    }
+    .alert-success {
+      background: rgba(34, 197, 94, 0.15);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      color: #86efac;
+    }
+    @media (max-width: 768px) {
+      body { flex-direction: column; }
+      .left-panel { padding: 40px 20px; min-height: 200px; }
+      .left-panel h1 { font-size: 1.8rem; }
+      .right-panel { padding: 30px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="left-panel">
+    <h1>Join Us</h1>
+    <p>Create your account and start managing users in minutes. It's fast, free, and easy.</p>
+  </div>
+  <div class="right-panel">
+    <div class="register-box">
+      <h2>Create Account</h2>
+      <p class="subtitle">Fill in the details below to get started</p>
+
+      <% if (typeof errorMessage !== 'undefined' && errorMessage) { %>
+        <div class="alert alert-danger" role="alert">
+          <%= errorMessage %>
+        </div>
+      <% } %>
+      <% if (typeof successMessage !== 'undefined' && successMessage) { %>
+        <div class="alert alert-success" role="alert">
+          <%= successMessage %>
+        </div>
+      <% } %>
+
+      <form id="registerForm" method="POST" action="/register">
+        <div class="form-group">
+          <label for="username">Email Address</label>
+          <input type="text" id="username" name="username" placeholder="you@example.com">
+          <span class="error-msg" id="usernameError"></span>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Min 6 chars, 1 number, 1 special">
+          <span class="error-msg" id="passwordError"></span>
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter your password">
+          <span class="error-msg" id="confirmPasswordError"></span>
+        </div>
+        <button class="btn-submit" type="submit">Create Account</button>
+      </form>
+
+      <div class="bottom-link">
+        Already have an account? <a href="/login">Sign in</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function() {
+      $('#registerForm').on('submit', function(e) {
+        $('.error-msg').hide().text('');
+
+        var username = $('#username').val().trim();
+        var password = $('#password').val();
+        var confirmPassword = $('#confirmPassword').val();
+        var isValid = true;
+
+        // 1. Validate email format
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!username) {
+          $('#usernameError').text('Email is required.').show();
+          isValid = false;
+        } else if (!emailRegex.test(username)) {
+          $('#usernameError').text('Please enter a valid email address.').show();
+          isValid = false;
+        }
+
+        // 2. Validate password rules
+        var numberRegex = /\d/;
+        var specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
+
+        if (!password) {
+          $('#passwordError').text('Password is required.').show();
+          isValid = false;
+        } else if (password.length < 6) {
+          $('#passwordError').text('At least 6 characters required.').show();
+          isValid = false;
+        } else if (!numberRegex.test(password)) {
+          $('#passwordError').text('Must contain at least 1 number.').show();
+          isValid = false;
+        } else if (!specialCharRegex.test(password)) {
+          $('#passwordError').text('Must contain at least 1 special character.').show();
+          isValid = false;
+        }
+
+        // 3. Validate password match
+        if (!confirmPassword) {
+          $('#confirmPasswordError').text('Please re-confirm your password.').show();
+          isValid = false;
+        } else if (password !== confirmPassword) {
+          $('#confirmPasswordError').text('Passwords do not match.').show();
+          isValid = false;
+        }
+
+        if (!isValid) {
+          e.preventDefault();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
