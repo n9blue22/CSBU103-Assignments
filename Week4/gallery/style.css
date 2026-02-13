@@ -1,0 +1,131 @@
+:root {
+    --bg-main: #000000;
+    --bg-grid: #202124;
+    --text-primary: #e8eaed;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-grid);
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-primary);
+    overflow-x: hidden;
+}
+
+/* Header */
+.header {
+    padding: 20px;
+    text-align: center;
+}
+.header h1 { margin: 0; font-weight: 400; font-size: 1.5rem; }
+.header p { color: #9aa0a6; font-size: 0.9rem; margin-top: 5px; }
+
+/* Grid Layout */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 4px; /* Google Photos style gap */
+    padding: 4px;
+}
+
+.photo-card {
+    position: relative;
+    padding-bottom: 75%; /* Aspect Ratio 4:3 */
+    overflow: hidden;
+    cursor: pointer;
+    background: #333;
+}
+
+.photo-card img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.2s;
+}
+
+.photo-card:hover img {
+    opacity: 0.9;
+}
+
+/* --- LIGHTBOX --- */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 1);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    
+    /* Animation fade-in */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+}
+
+.lightbox.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.lightbox-toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 1002;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
+}
+
+.icon-btn {
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+    opacity: 0.8;
+}
+.icon-btn:hover { opacity: 1; }
+
+.lightbox-viewport {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Cắt phần ảnh thừa */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-wrapper {
+    /* Wrapper này sẽ không bị transform, nó giúp căn giữa ban đầu */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#lightbox-img {
+    max-width: 100%;
+    max-height: 100%;
+    /* Quan trọng: đặt gốc tọa độ biến đổi về góc trái trên để tính toán JS dễ hơn */
+    transform-origin: 0 0;
+    will-change: transform; /* Tối ưu GPU */
+    
+    /* Cursors */
+    cursor: grab;
+}
+
+#lightbox-img.grabbing {
+    cursor: grabbing;
+}
